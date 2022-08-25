@@ -1,0 +1,15 @@
+﻿生成启动时间为 2021/3/10 21:43:04。
+     1>项目“E:\Project\language_C\ytext1\ytext1\ytext1.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\ytext1.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         D:\VS_2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt e.c
+         e.c
+     1>e:\project\language_c\ytext1\ytext1\e.c(7): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\vs_2010\vc\include\stdio.h(304) : 参见“scanf”的声明
+     1>e:\project\language_c\ytext1\ytext1\e.c(19): error C2059: 语法错误:“常量”
+     1>已完成生成项目“E:\Project\language_C\ytext1\ytext1\ytext1.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.09
