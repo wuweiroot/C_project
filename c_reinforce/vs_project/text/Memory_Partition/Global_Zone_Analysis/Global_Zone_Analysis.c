@@ -13,6 +13,8 @@ char *get_str2()
     return q;
 }
 
+
+
 int main(void)
 {
     char *p = NULL;

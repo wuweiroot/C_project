@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "random": "c",
+        "*.idl": "c"
     }
 }

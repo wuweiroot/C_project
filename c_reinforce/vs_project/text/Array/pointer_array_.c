@@ -26,7 +26,7 @@ int main(int  argc , char *argv[])  //操作系统调用此函数,
     {
         printf("%s\n" , argv[i]);
     }
-
+ 
 
     printf("\n");
     system("pause");

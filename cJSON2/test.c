@@ -40,7 +40,7 @@ struct record
 
 
 /* Create a bunch of objects as demonstration. */
-static int print_preallocated(cJSON *root)
+static int print_preallocated2(cJSON *root)
 {
     /* declarations */
     char *out = NULL;
@@ -102,6 +102,27 @@ static int print_preallocated(cJSON *root)
     free(out);
     free(buf_fail);
     free(buf);
+    return 0;
+}
+
+
+/* Create a bunch of objects as demonstration. */
+static int print_preallocated(cJSON *root)
+{
+    /* declarations */
+    char *out = NULL;
+    char *buf = NULL;
+    char *buf_fail = NULL;
+    size_t len = 0;
+    size_t len_fail = 0;
+
+    /* formatted print */
+    out = cJSON_Print(root);
+
+    printf("%s",out);
+
+    free(out);
+
     return 0;
 }
 
