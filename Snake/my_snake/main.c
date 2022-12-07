@@ -12,43 +12,48 @@
 
 typedef struct position
 {
-    int x;//横坐标
-    int y;//纵坐标
+    int x;//�?坐标
+    int y;//纵坐�?
 } positions;
 
 positions position;
 
-struct Snake//蛇
+typedef struct Snake//�?
 {
-    /*用数组储存蛇的每一部分的坐标*/
+    /*用数组储存蛇的每一部分的坐�?*/
     positions body[100];
     int len;//长度
+    char direction;
     int speed;//速度
-} snake;
+} Snakes;
+Snakes snake;
 
-void Snake(positions position);
 void Snake_init();
-void Snake_Show(positions position);
-void Snake_Show_init();
+void Snake_Show(positions position[],int len);
+void Snake_Show_init(positions position[],int len);
 void map_init();
 void gotoxy(int x,int y);
+void Snake_Update(Snakes snake,char direction);
 
 
 int main()
 { 
+    system("cls");
     Snake_init();
     map_init();
-    Snake_Show_init();
 
-    while(1)
+
+    while(0)
     {
-        snake.body[0].x ++;
-  
-        Snake_Show(snake.body[0]);
+        //snake.body[0].x ++;
+
+        Snake_Update(Snakes snake , char direction);
+        Snake_Show(snake.body,snake.len);
         Sleep(snake.speed);
 
     }
-    
+
+    gotoxy(High+1,0);
 }
 
 void gotoxy(int x,int y)
@@ -61,19 +66,46 @@ void gotoxy(int x,int y)
         SHORT X; // horizontal coordinate
         SHORT Y; // vertical coordinate
     } COORD;
-    用该结构体来储存坐标
+    用�?�结构体来储存坐�?
     */
-    hout=GetStdHandle(STD_OUTPUT_HANDLE);//从标准输出设备中取得一个句柄
-    /*这其中x,y的赋值对象要注意,不懂的好好想想*/
+    hout=GetStdHandle(STD_OUTPUT_HANDLE);//从标准输出�?��?�中取得一�?句柄
+    /*这其中x,y的赋值�?�象要注�?,不懂的好好想�?*/
     cor.X=y;
     cor.Y=x;
-    SetConsoleCursorPosition(hout,cor);//定位光标的函数
+    SetConsoleCursorPosition(hout,cor);//定位光标的函�?
 }
+void Snake_Update(Snakes snake , char direction)
+{
+    switch (direction)
+    {
+    case 'w':
+        if(snake.direction == 'a' || snake.direction == 'd'){
+            snake.body[0].x++;
+        }    
+        break;
+    case 's':
+       if(snake.direction == 'a' || snake.direction == 'd'){
+            snake.body[0].x--;
+        }  
+        break;
+    case 'a':
+       if(snake.direction == 'w' || snake.direction == 's'){
+            snake.body[0].y--;
+        }  
+        break;        
+    case 'd':
+        if(snake.direction == 'w' || snake.direction == 's'){
+            snake.body[0].y++;
+        }  
+        break;
 
+    default:
+        break;
+    }
+}
 
 void map_init()
 {
-    system("cls");
 
     for (size_t i = 0; i < Width; i++)
     {
@@ -101,38 +133,44 @@ void map_init()
 
 }
 
-void Snake_Show_init()
+void Snake_Show_init(positions position[],int len)
 {
-    gotoxy(position.x , position.y);
-    printf("*");
-    gotoxy(High+1,0);
-    
+    for (size_t i = 0; i < len; i++)
+    {
+        gotoxy(position[i].x , position[i].y);
+        printf("*");
+    }
+
 }
 
-void Snake_Show(positions position)
+void Snake_Show(positions position[],int len)
 {
     //map_init();
-    gotoxy(position.x , position.y);
-    printf("*");
+    for (size_t i = 0; i < len; i++)
+    {
+        gotoxy(position[i].x , position[i].y);
+        printf("*");
+    }
+    gotoxy(position[len-1].x , position[len-1].y);
+    printf(" ");
+
 }
 
 void Snake_init()
 {
-    snake.len = 1;
+    snake.len = 3;
     snake.body[0].x = High/2;
     snake.body[0].y = Width/2;
+
+    snake.body[1].x = High/2;
+    snake.body[1].y = Width/2 - 1;
+
+    snake.body[2].x = High/2;
+    snake.body[2].y = Width/2 -2;
+
     snake.speed = 300;
-    
 
+    snake.direction = 'd';
+    Snake_Show_init(snake.body , snake.len);
 }
 
-
-
-void Snake(positions position)
-{
-
-    Snake_Show(position);
-    
-    Sleep(snake.speed );
-
-}
