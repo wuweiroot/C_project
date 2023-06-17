@@ -1,6 +1,9 @@
 #include <stdio.h>
-long long *sp1;
-long long *spm;  //64位系统，地址宽度为8个字节
+long long *sp1;    //指向fun函数
+long long *spm;   //指向main函数
+
+//64位系统，地址宽度为8个字节
+//rdi rsi函数第1 2参数 sw(sp1,spm)
 
 extern void sw(long long *,long long **);
 
@@ -9,7 +12,7 @@ void fun()
     while (1)
     {
         printf("fun\n");
-        sw(spm,&sp1);
+        sw(spm,&sp1); //把当前sp记录在sp1变量中，将sp指针指向spm(main函数)
     }
     return;
 }
@@ -24,7 +27,7 @@ int main()
     {
         printf("main\n");
         printf("sp1 = %p\n",sp1);
-        sw(sp1,&spm); //rdi rsi函数第1 2参数 sw(sp1,spm);  
+        sw(sp1,&spm);  //把当前sp记录在spm变量中，将sp指针指向fun函数地址
 
         printf("main_sw\n");
         printf("sp1_2 = %p\n",sp1);

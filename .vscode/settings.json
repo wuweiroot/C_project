@@ -6,6 +6,10 @@
         "chrono": "c",
         "algorithm": "c",
         "random": "c",
-        "*.idl": "c"
+        "*.idl": "c",
+        "stdio.h": "c",
+        "regex": "c",
+        "conio.h": "c",
+        "main.h": "c"
     }
 }
